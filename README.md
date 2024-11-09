@@ -47,18 +47,11 @@ You will also need to download the correct version of **ChromeDriver** compatibl
    all_comments = pd.DataFrame(columns=["URL", "Comment"])
    ```
 
-3. **Extract Comments from Each Video:**
+3. **Take Comments from Each Video:**
 
    Iterate through each URL in the list and extract the comments. The script will attempt to scrape 25 comments for each video and append them to the `all_comments` DataFrame. If an error occurs for a specific URL, it will print the error message and continue with the next URL.
 
    ```python
-   # Define the list of URLs and store comments
-   all_comments = pd.DataFrame(columns=["URL", "Comment"])
-   link_youtube = [
-       'https://www.youtube.com/watch?v=WWbyYFPHDH8&list=PL2O3HdJI4voHNEv59SdXKRQVRZAFmwN9E&index=10',
-       'https://www.youtube.com/watch?v=U30sF4m0bd0&list=PL2O3HdJI4voHNEv59SdXKRQVRZAFmwN9E&index=11'
-   ]
-
    for url in link_youtube:
        try:
            comments = ngambil_youtube(url, 25)
