@@ -52,44 +52,6 @@ You will also need to download the correct version of **ChromeDriver** compatibl
    Iterate through each URL in the list and extract the comments. The script will attempt to scrape 25 comments for each video and append them to the `all_comments` DataFrame. If an error occurs for a specific URL, it will print the error message and continue with the next URL.
 
    ```python
-   from selenium import webdriver
-   from selenium.webdriver.chrome.service import Service
-   from selenium.webdriver.chrome.options import Options
-   from selenium.webdriver.common.by import By
-   from selenium.webdriver.common.action_chains import ActionChains
-   import time
-
-   def ngambil_youtube(url, num_comments):
-       # Setup Selenium WebDriver options
-       options = Options()
-       options.add_argument("--headless")  # Running headless (without GUI)
-       options.add_argument("--no-sandbox")
-       options.add_argument("--disable-dev-shm-usage")
-       
-       # Path to ChromeDriver
-       service = Service(r"C:\path\to\chromedriver.exe")
-       driver = webdriver.Chrome(service=service, options=options)
-       
-       driver.get(url)
-       time.sleep(2)
-       
-       driver.execute_script("window.scrollTo(0, 600);")
-       time.sleep(3)
-       
-       comments = set()
-       while len(comments) < num_comments:
-           driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
-           time.sleep(2)
-           comment_elements = driver.find_elements(By.XPATH, '//*[@id="content-text"]')
-           for element in comment_elements[len(comments):]:
-               comments.add(element.text)
-           if len(comments) >= num_comments:
-               break
-
-       driver.quit()
-       
-       return list(comments)[:num_comments]
-
    # Define the list of URLs and store comments
    all_comments = pd.DataFrame(columns=["URL", "Comment"])
    link_youtube = [
