@@ -21,7 +21,17 @@ You will also need to download the correct version of **ChromeDriver** compatibl
 
 ## How to Use
 
-1. **Set up the list of YouTube links:**
+1. **Set up your webdriver:**
+
+   Open the file and change PATH
+
+   Example:
+
+   ```python
+   service = Service(r"C:\path\to\chromedriver.exe")
+   ```
+
+2.**Set up the list of YouTube links:**
 
    Define a list of YouTube video URLs from which you want to extract comments. You can add as many URLs as you like.
 
@@ -36,8 +46,7 @@ You will also need to download the correct version of **ChromeDriver** compatibl
        'https://www.youtube.com/watch?v=Sj1ybuDDf9I&list=PL2O3HdJI4voHNEv59SdXKRQVRZAFmwN9E&index=14'
    ]
    ```
-
-2. **Define the DataFrame for storing comments:**
+3. **Define the DataFrame for storing comments:**
 
    Create an empty DataFrame where all comments will be stored. The DataFrame will have two columns: `URL` and `Comment`.
 
@@ -47,7 +56,7 @@ You will also need to download the correct version of **ChromeDriver** compatibl
    all_comments = pd.DataFrame(columns=["URL", "Comment"])
    ```
 
-3. **Take Comments from Each Video:**
+4. **Take Comments from Each Video:**
 
    Iterate through each URL in the list and extract the comments. The script will attempt to scrape 25 comments for each video and append them to the `all_comments` DataFrame. If an error occurs for a specific URL, it will print the error message and continue with the next URL.
 
