@@ -14,7 +14,7 @@ def ngambil_youtube(url, num_comments, timeout=30):
     options.add_argument("--disable-dev-shm-usage")
     
     # Path absolut ke driver
-    service = Service(r"C:\Users\untu0\Downloads\chromedriver-win64 (2)\chromedriver-win64\chromedriver.exe")
+    service = Service(r"PATH")
     driver = webdriver.Chrome(service=service, options=options)
     
     # Buka URL YouTube
